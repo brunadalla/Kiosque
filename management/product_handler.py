@@ -38,3 +38,19 @@ def menu_report():
             most_common_type = type
 
     return f'Products Count: {product_count} - Average Price: ${average_price} - Most Common Type: {most_common_type}'
+
+def add_product(menu: list, **kwargs: dict):
+    new_product = kwargs.copy()
+    ids = []
+
+    if len(menu) == 0:
+        new_product['_id'] = 1 
+        return new_product
+    
+    for product in menu:
+        ids.append(product['_id'])
+
+    max_id = max(ids)
+
+    new_product['_id'] = max_id + 1
+    return new_product 

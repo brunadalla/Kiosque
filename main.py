@@ -1,5 +1,5 @@
 from menu import products
-from management import get_product_by_id, get_product_by_type, menu_report, add_product, calculate_tab, add_product_extra
+from management import get_product_by_id, get_products_by_type, menu_report, add_product, calculate_tab, add_product_extra
 
 if __name__ == "__main__":
     new_product = {
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     }
 
     # print(get_product_by_id(28))
-    # print(get_product_by_type('drink'))
+    # print(get_products_by_type('drink'))
     # print(menu_report())
 
     # print(add_product(products, **new_product))
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # print(calculate_tab(table_2))
 
     # print(get_product_by_id([1, 2, 3, 4]))
-    # print(get_product_by_type([1, 2, 3, 4]))
+    # print(get_products_by_type([1, 2, 3, 4]))
     # print(add_product_extra(products, *required_keys, **new_product_2))
     # print(add_product_extra(products, *required_keys, **new_product_3))
     ...

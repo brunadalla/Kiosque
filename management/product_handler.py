@@ -11,7 +11,7 @@ def get_product_by_id(id: int):
 
     return {}
 
-def get_product_by_type(type_to_search: str):
+def get_products_by_type(type_to_search: str):
     
     if type(type_to_search) != str:
         raise TypeError('product type must be a str')
@@ -49,12 +49,16 @@ def menu_report():
 def add_product(menu: list, **kwargs: dict):
     if len(menu) == 0:
         kwargs['_id'] = 1 
+        menu.append(kwargs)
+
         return kwargs
     
     ids = [value['_id'] for value in menu]
     max_id = max(ids)
 
     kwargs['_id'] = max_id + 1
+    menu.append(kwargs)
+
     return kwargs 
 
 def add_product_extra(menu: list, *args: tuple, **kwargs: dict):
@@ -66,10 +70,14 @@ def add_product_extra(menu: list, *args: tuple, **kwargs: dict):
     
     if len(menu) == 0:
         required_product['_id'] = 1 
+        menu.append(required_product)
+
         return required_product
     
     ids = [value['_id'] for value in menu]
     max_id = max(ids)
 
     required_product['_id'] = max_id + 1
+    menu.append(required_product)
+    
     return required_product 

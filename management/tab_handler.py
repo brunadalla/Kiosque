@@ -19,4 +19,4 @@ def calculate_tab(check: list):
 
     subtotal = round(subtotal, 2)
 
-    return {'subtotal': str(subtotal)}
+    return {'subtotal': f'${str(subtotal)}'}

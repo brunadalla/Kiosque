@@ -1,5 +1,5 @@
 from menu import products
-from management import get_product_by_id, get_product_by_type, menu_report, add_product, calculate_tab
+from management import get_product_by_id, get_product_by_type, menu_report, add_product, calculate_tab, add_product_extra
 
 if __name__ == "__main__":
     new_product = {
@@ -21,12 +21,36 @@ if __name__ == "__main__":
         {"_id": 21, "amount": 5},
     ]
 
-    print(get_product_by_id(28))
-    print(get_product_by_type('drink'))
-    print(menu_report())
+    required_keys = ("description", "price", "rating", "title", "type")
+   
+    new_product_2 = {
+        "title": "X-Python",
+        "price": 5.0,
+        "rating": 5,
+        "description": "Sanduiche de Python",
+        "type": "fast-food",
+        "extra_key_1": "extra_value_1",
+        "extra_key_2": "extra_value_2"
+    }
 
-    print(add_product(products, **new_product))
+    new_product_3 = {
+        "title": "X-Python",
+        "price": 5.0,
+        "description": "Sanduiche de Python",
+        "type": "fast-food"
+    }
 
-    print(calculate_tab(table_1))
-    print(calculate_tab(table_2))
+    # print(get_product_by_id(28))
+    # print(get_product_by_type('drink'))
+    # print(menu_report())
+
+    # print(add_product(products, **new_product))
+
+    # print(calculate_tab(table_1))
+    # print(calculate_tab(table_2))
+
+    # print(get_product_by_id([1, 2, 3, 4]))
+    # print(get_product_by_type([1, 2, 3, 4]))
+    # print(add_product_extra(products, *required_keys, **new_product_2))
+    # print(add_product_extra(products, *required_keys, **new_product_3))
     ...

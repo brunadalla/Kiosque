@@ -2,18 +2,25 @@ from menu import products
 
 def get_product_by_id(id: int):
 
+    if not type(id) == int:
+        raise TypeError('product id must be an int')
+
     for product in products:
         if product['_id'] == id:
             return product
 
     return {}
 
-def get_product_by_type(type: str):
-    products_list = []
+def get_product_by_type(type_to_search: str):
+    
+    if type(type_to_search) != str:
+        raise TypeError('product type must be a str')
 
-    for product in products:
-        if product['type'] == type:
-            products_list.append(product)
+    products_list = [
+        product 
+        for product in products 
+        if product['type'] == type_to_search
+    ]
 
     return products_list
 
@@ -40,17 +47,29 @@ def menu_report():
     return f'Products Count: {product_count} - Average Price: ${average_price} - Most Common Type: {most_common_type}'
 
 def add_product(menu: list, **kwargs: dict):
-    new_product = kwargs.copy()
-    ids = []
-
     if len(menu) == 0:
-        new_product['_id'] = 1 
-        return new_product
+        kwargs['_id'] = 1 
+        return kwargs
     
-    for product in menu:
-        ids.append(product['_id'])
-
+    ids = [value['_id'] for value in menu]
     max_id = max(ids)
 
-    new_product['_id'] = max_id + 1
-    return new_product 
+    kwargs['_id'] = max_id + 1
+    return kwargs 
+
+def add_product_extra(menu: list, *args: tuple, **kwargs: dict):
+    for item in args:
+        if not item in kwargs.keys():
+            raise KeyError(f'field {item} is required')
+
+    required_product = {key: value for (key, value) in kwargs.items() if key in args}
+    
+    if len(menu) == 0:
+        required_product['_id'] = 1 
+        return required_product
+    
+    ids = [value['_id'] for value in menu]
+    max_id = max(ids)
+
+    required_product['_id'] = max_id + 1
+    return required_product 

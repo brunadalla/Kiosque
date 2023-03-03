@@ -1,4 +1,4 @@
-# iosque
+# Kiosque
 
  O objetivo desse projeto era desenvolver um sistema que gerencia produtos e comandas de um restaurante.
 

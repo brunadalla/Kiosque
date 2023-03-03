@@ -1,4 +1,6 @@
-# M5 - Kiosque
+# iosque
+
+ O objetivo desse projeto era desenvolver um sistema que gerencia produtos e comandas de um restaurante.
 
 ## Como rodar os testes localmente
 
@@ -11,11 +13,3 @@ pip install pytest-testdox
 ```shell
 pytest --testdox -vvs
 ```
-
-
-### Rodando os testes localmente para o extra (não contabiliza para a entrega)
-
-```shell
-pytest --testdox -vvs tests/test_management/extra_add_product.py
-```
-
